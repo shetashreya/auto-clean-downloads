@@ -1,0 +1,9 @@
+# Auto-Clean Downloads Requirements
+
+# Optional: For PDF merging functionality
+# Uncomment the line below if you want to use --merge-pdfs
+# pypdf>=3.0.0
+
+# Note: The script works without any dependencies for basic functionality
+# (categorization, temp cleanup, duplicate detection)
+# Only pypdf is needed if you want to merge PDF files

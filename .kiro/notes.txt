@@ -1,0 +1,145 @@
+AUTO-CLEAN DOWNLOADS - DEVELOPMENT NOTES
+========================================
+
+Project Overview:
+-----------------
+Production-ready Python script for automatically organizing and cleaning Downloads folders.
+Designed with safety, flexibility, and user-friendliness in mind.
+
+Key Design Decisions:
+---------------------
+
+1. SHA-256 for Duplicate Detection
+   - Chosen for reliability and collision resistance
+   - Ensures accurate duplicate identification
+   - Industry-standard hashing algorithm
+
+2. Move vs Delete for Duplicates
+   - Duplicates are moved to Cleaned/Duplicates folder, not deleted
+   - Prevents accidental data loss
+   - Users can manually review and delete if desired
+
+3. History Tracking
+   - All operations logged to .cleanup_history.json
+   - Enables undo functionality
+   - Provides audit trail for troubleshooting
+   - Note: Deleted temp files cannot be restored
+
+4. Dry-Run Mode
+   - Essential for user confidence
+   - Allows preview before making changes
+   - Prints detailed summary of planned actions
+
+5. Optional Dependencies
+   - Core functionality requires no external packages
+   - pypdf only needed for PDF merging feature
+   - Graceful degradation if pypdf not installed
+
+6. Cross-Platform Support
+   - Uses pathlib for path handling
+   - Works on Windows, macOS, and Linux
+   - Expanduser() handles ~ in paths
+
+Implementation Details:
+-----------------------
+
+File Categories:
+- 8 predefined categories + "Others" catch-all
+- Easily extensible by modifying CATEGORIES dict
+- Based on file extensions (case-insensitive)
+
+Temp File Detection:
+- Identifies common incomplete download extensions
+- .crdownload (Chrome), .part (Firefox), .tmp, .partial
+- Can be disabled with --no-temp-clean flag
+
+Conflict Resolution:
+- Automatic filename numbering (file_1.txt, file_2.txt, etc.)
+- Prevents overwriting existing files
+- Maintains data integrity
+
+Error Handling:
+- Try-except blocks around file operations
+- Errors logged and counted in summary
+- Script continues on individual file errors
+- Non-zero exit code on critical failures
+
+Performance Considerations:
+---------------------------
+- SHA-256 hashing done in 4KB chunks (memory efficient)
+- Files processed sequentially (simple, reliable)
+- Could be parallelized for large folders (future enhancement)
+
+Testing Recommendations:
+------------------------
+1. Always test with --dry-run first
+2. Test on a copy of your Downloads folder
+3. Verify undo functionality works as expected
+4. Test with various file types and edge cases
+5. Test with files containing special characters in names
+
+Known Limitations:
+------------------
+1. Undo cannot restore deleted temporary files
+2. Undo may fail if files were manually moved/deleted after cleanup
+3. Large files may take time to hash for duplicate detection
+4. PDF merging requires pypdf installation
+5. Symlinks are not followed (by design, for safety)
+
+Future Enhancements:
+--------------------
+- [ ] Add configuration file support (.cleanrc)
+- [ ] Support for custom category definitions
+- [ ] Parallel processing for large folders
+- [ ] File age-based cleanup (e.g., delete files older than X days)
+- [ ] Integration with cloud storage services
+- [ ] GUI version for non-technical users
+- [ ] Scheduled/automated cleanup (cron/Task Scheduler)
+- [ ] Smart categorization using file content analysis
+- [ ] Compression of old files before archiving
+
+Security Considerations:
+------------------------
+- Script only operates on specified directories
+- No network operations (fully offline)
+- No execution of file contents
+- Safe for use on sensitive data
+- History file contains file paths (consider privacy)
+
+Usage Tips:
+-----------
+1. Run with --dry-run first to preview changes
+2. Use --verbose to see detailed progress
+3. Keep .cleanup_history.json for undo capability
+4. Regularly review Duplicates folder before deleting
+5. Consider backing up important files before first run
+6. Use --no-duplicates for faster operation if not needed
+7. Merge PDFs only when you're sure you want to combine them
+
+Troubleshooting:
+----------------
+- Permission errors: Check folder permissions
+- Import errors: Ensure Python 3.6+ is installed
+- PDF merge fails: Install pypdf with pip
+- Undo not working: Check if .cleanup_history.json exists
+- Files not categorized: Check if extension is in CATEGORIES dict
+
+Version History:
+----------------
+v1.0.0 (2025-12-05)
+- Initial production release
+- All core features implemented
+- Comprehensive documentation
+- Full CLI argument support
+- Undo functionality
+- Dry-run mode
+- PDF merging (optional)
+- Duplicate detection
+- Temp file cleanup
+- Smart categorization
+
+Contact & Support:
+------------------
+For issues, suggestions, or contributions, please refer to the project repository.
+
+License: MIT

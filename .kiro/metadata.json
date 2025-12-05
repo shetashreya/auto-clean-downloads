@@ -1,0 +1,75 @@
+{
+  "project": {
+    "name": "Auto-Clean Downloads",
+    "version": "1.0.0",
+    "description": "Production-ready Python script to automatically organize and clean Downloads folders",
+    "author": "Kiro AI Assistant",
+    "created": "2025-12-05",
+    "language": "Python",
+    "python_version": "3.6+"
+  },
+  "features": [
+    "Smart file categorization by extension",
+    "Temporary file cleanup (.crdownload, .part, .tmp, .partial)",
+    "SHA-256 based duplicate detection",
+    "PDF merging capability (optional)",
+    "Dry-run mode for safe previewing",
+    "Undo functionality with history tracking",
+    "Verbose logging option",
+    "Custom source and target path support",
+    "Automatic conflict resolution",
+    "Cross-platform compatibility"
+  ],
+  "categories": {
+    "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".webp", ".ico", ".tiff", ".heic"],
+    "Documents": [".doc", ".docx", ".txt", ".rtf", ".odt", ".pages", ".tex", ".wpd", ".wps"],
+    "PDFs": [".pdf"],
+    "Archives": [".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz", ".iso", ".dmg"],
+    "Installers": [".exe", ".msi", ".dmg", ".pkg", ".deb", ".rpm", ".appimage"],
+    "Video": [".mp4", ".avi", ".mkv", ".mov", ".wmv", ".flv", ".webm", ".m4v", ".mpg", ".mpeg"],
+    "Audio": [".mp3", ".wav", ".flac", ".aac", ".ogg", ".wma", ".m4a", ".opus"],
+    "Code": [".py", ".js", ".java", ".cpp", ".c", ".h", ".cs", ".php", ".rb", ".go", ".rs", ".swift", ".kt", ".ts", ".jsx", ".tsx", ".html", ".css", ".scss", ".json", ".xml", ".yaml", ".yml", ".sh", ".bat", ".ps1"]
+  },
+  "cli_flags": {
+    "--path": "Custom source folder path (default: ~/Downloads)",
+    "--target": "Custom target folder path (default: <source>/Cleaned)",
+    "--dry-run": "Preview changes without applying them",
+    "--no-temp-clean": "Skip temporary file removal",
+    "--no-duplicates": "Skip duplicate detection",
+    "--merge-pdfs": "Merge all PDFs into one file (requires pypdf)",
+    "--undo": "Reverse the last cleanup operation",
+    "--verbose": "Show detailed progress information"
+  },
+  "dependencies": {
+    "required": [],
+    "optional": [
+      {
+        "name": "pypdf",
+        "version": ">=3.0.0",
+        "purpose": "PDF merging functionality",
+        "install": "pip install pypdf"
+      }
+    ]
+  },
+  "files": {
+    "auto_clean_downloads.py": "Main script with all functionality",
+    "README.md": "Comprehensive documentation",
+    "requirements.txt": "Python dependencies (optional)",
+    ".cleanup_history.json": "Generated history file for undo support"
+  },
+  "safety_features": [
+    "No data loss - duplicates are moved, not deleted",
+    "Automatic filename conflict resolution",
+    "Dry-run mode for safe testing",
+    "Undo support with history tracking",
+    "Graceful error handling",
+    "Detailed operation logging"
+  ],
+  "usage_examples": [
+    "python auto_clean_downloads.py",
+    "python auto_clean_downloads.py --dry-run",
+    "python auto_clean_downloads.py --path ~/MyDownloads",
+    "python auto_clean_downloads.py --merge-pdfs --verbose",
+    "python auto_clean_downloads.py --undo"
+  ]
+}
