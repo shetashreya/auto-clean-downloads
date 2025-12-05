@@ -1,10 +1,10 @@
-# Auto-Clean Downloads 🧹
+# Auto-Clean Downloads
 
 A production-ready Python script to automatically organize and clean your Downloads folder. Categorizes files, removes temporary files, detects duplicates, and optionally merges PDFs.
 
 ## Features
 
-✨ **Smart Categorization** - Automatically sorts files into organized folders:
+**Smart Categorization** - Automatically sorts files into organized folders:
 - Images (jpg, png, gif, etc.)
 - Documents (doc, txt, rtf, etc.)
 - PDFs
@@ -15,15 +15,15 @@ A production-ready Python script to automatically organize and clean your Downlo
 - Code (py, js, java, etc.)
 - Others (everything else)
 
-🗑️ **Temp File Cleanup** - Removes incomplete downloads and temporary files (.crdownload, .part, .tmp, .partial)
+**Temp File Cleanup** - Removes incomplete downloads and temporary files (.crdownload, .part, .tmp, .partial)
 
-🔍 **Duplicate Detection** - Uses SHA-256 hashing to find and move duplicate files to a separate folder (no data loss)
+**Duplicate Detection** - Uses SHA-256 hashing to find and move duplicate files to a separate folder (no data loss)
 
-📄 **PDF Merging** - Optionally merge all PDFs into a single file (requires pypdf)
+**PDF Merging** - Optionally merge all PDFs into a single file (requires pypdf)
 
-🔄 **Undo Support** - Best-effort reversal of cleanup operations using history tracking
+**Undo Support** - Best-effort reversal of cleanup operations using history tracking
 
-🔬 **Dry Run Mode** - Preview all changes before applying them
+**Dry Run Mode** - Preview all changes before applying them
 
 ## Installation
 
