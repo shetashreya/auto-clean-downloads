@@ -235,3 +235,16 @@ MIT License - feel free to use this script for personal or commercial projects.
 ## Author
 
 Created by shreya for keeping Downloads folders organized and clutter-free.
+
+## Screenshots
+
+### 1. Dry-Run Output
+<img width="586" height="190" alt="Screenshot 2025-12-05 121015" src="https://github.com/user-attachments/assets/d032dd24-f424-4f09-90c5-1e1aabf80011" />
+<br><br>
+<img width="1187" height="1049" alt="Screenshot 2025-12-05 121100" src="https://github.com/user-attachments/assets/fad8f1a5-4587-4dad-9b31-ec1fd52faed5" />
+
+
+### 2. Kiro Metadata Folder Proof
+<img width="223" height="234" alt="Screenshot 2025-12-05 121912" src="https://github.com/user-attachments/assets/98c728cc-d451-4e2c-8257-6447165ad5ce" />
+
+
